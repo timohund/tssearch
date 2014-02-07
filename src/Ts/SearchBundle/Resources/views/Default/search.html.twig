@@ -1,0 +1,13 @@
+
+{% for document in documents %}
+    <p>Url: {{ document.url }}</p>
+    <p>Titel: {{ document.title }}</p>
+    <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
+
+    <ul>
+        {% for link in document.incominglinkurls_sm|sort %}
+               <li>{{ link }}</li>
+        {% endfor %}
+    </ul>
+
+{% endfor %}

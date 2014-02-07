@@ -1,0 +1,8 @@
+services:
+  ts.search.domain.websiterepository:
+    class: Ts\SearchBundle\Domain\WebsiteRepository
+    arguments: ["%solr_hostname%","%solr_port%","%solr_path%","%solr_core%"]
+  ts.search.contoller:
+    class: Ts\SearchBundle\Controller\DefaultController
+    calls:
+      - [setWebsiteRepository, ["@ts.search.domain.websiterepository"]]
