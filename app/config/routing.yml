@@ -1,6 +1,4 @@
 ts_search:
-    resource: "@TsSearchBundle/Controller/"
-    type:     annotation
+    resource: "@TsSearchBundle/Resources/config/routing.yml"
     prefix:   /
-
 

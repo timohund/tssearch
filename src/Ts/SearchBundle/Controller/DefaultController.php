@@ -15,14 +15,20 @@ class DefaultController extends Controller {
 	 * @Template()
 	 */
 	public function indexAction() {
-		return array();
+        $websiteRepository =$this->get("ts.search.domain.websiterepository");
+
+        return $this->render(
+            'TsSearchBundle:Default:index.html.twig',
+            array('count' =>  $websiteRepository->countAll())
+        );
+
 	}
 
 	/**
-	 * @Route("/search")
+	 * @Route("/searchUrl")
 	 * @Template()
 	 */
-	public function searchAction() {
+	public function searchUrlAction() {
 		$url = $this->getRequest()->get('url');
 
 		if($url != '') {

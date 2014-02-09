@@ -53,4 +53,15 @@ class WebsiteRepository {
 
         return $documents;
     }
+
+    /**
+     * @return integer
+     */
+    public function countAll() {
+        $query = $this->client->createSelect();
+        $query->setQuery("");
+        $resultset = $this->client->select($query);
+
+        return $resultset->getNumFound();
+    }
 }

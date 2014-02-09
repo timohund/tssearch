@@ -1,0 +1,7 @@
+ts_search_index:
+    resource: "@TsSearchBundle/Controller/"
+    type:     annotation
+    prefix:   /
+ts_search_deeplink:
+    path:      /search/{url}
+    defaults:  { _controller: TsSearchBundle:Default:search }

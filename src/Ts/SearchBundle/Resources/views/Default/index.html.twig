@@ -1,15 +1,15 @@
 <!doctype html>
 <html>
+    <head>
+        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}" />
+    </head>
 
-    <div class="main">
-        <div class="inner">
-            <div class="content">
-                <h1>Url search</h1>
+    <body>
+        <div id="bar">
+            <div id="formcontainer">
+                <p>Search incoming links in {{ count }} websites:</p>
+                {{ include('TsSearchBundle:Default:searchform.html.twig') }}
             </div>
-            <form action="search" method="post" class="search">
-                <input type="text" name="url"></textarea>
-                <input type="submit" />
-            </form>
         </div>
-    </div>
+    </body>
 </html>
