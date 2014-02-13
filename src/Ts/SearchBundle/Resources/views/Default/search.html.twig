@@ -1,21 +1,44 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}" />
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap-theme.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}">
+
+</head>
+
     <body>
-        {{ include('TsSearchBundle:Default:searchform.html.twig') }}
 
-        {% for document in documents %}
-            <p>Url: {{ document.url }}</p>
-            <p>Titel: {{ document.title }}</p>
-            <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid searchresults">
+            {% for document in documents %}
+                <div class="row">
 
-            <ul>
-                {% for link in document.incominglinkurls_sm|sort %}
-                    <li>{{ link }}</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
+                    <p>Url: {{ document.url }}</p>
+                    <p>Titel: {{ document.title }}</p>
+                    <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
+
+                    <ul>
+                        {% for link in document.incominglinkurls_sm|sort %}
+                            <li>{{ link }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="{{ asset('bundles/tssearch/js/bootstrap.min.js') }}"></script>
     </body>
 </html>

@@ -1,15 +1,36 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap-theme.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}">
+
     </head>
 
-    <body>
+    <body role="document" class="main">
         <div id="bar">
-            <div id="formcontainer">
-                <p>Search incoming links in {{ count }} websites:</p>
-                {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-8">Suche eingehende Links auf {{ count }} Webseiten:</div>
+                <div class="col-md-2">&nbsp;</div>
+
             </div>
+            <div class="row">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-8">
+                    {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+                </div>
+                <div class="col-md-2">&nbsp;</div>
+            </div>
+
         </div>
+
+
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="{{ asset('bundles/tssearch/js/bootstrap.min.js') }}"></script>
     </body>
 </html>

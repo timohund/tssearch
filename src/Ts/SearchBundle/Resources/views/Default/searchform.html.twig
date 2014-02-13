@@ -1,6 +1,17 @@
 {% block search %}
-    <form action="searchUrl" method="post" class="search">
-        <input type="text" name="url" id="url">
-        <input type="submit" value="Search" id="submit"/>
+    <form action="searchUrl" method="post" class="search form-horizontal" role="form">
+
+        <div class="row">
+            <label for="url" class="col-xs-2 control-label">Url (mit http://):</label>
+
+            <div class="col-xs-10">
+                <div class="input-group">
+                    <input type="url" name="url" id="url" class="form-control" placeholder="http://www.website.de/" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
     </form>
 {% endblock %}

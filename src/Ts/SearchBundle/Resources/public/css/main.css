@@ -2,11 +2,9 @@ body {
     font-family: Arial;
     font-size: 14px!important;
     background-color: #eee;
-    text-align: center;
-    margin: 0px;
 }
 
-#bar {
+body.main #bar {
     font-family: Arial;
     padding: 10px;
     border-color: #000;
@@ -18,17 +16,6 @@ body {
     background-color: #fff;
 }
 
-input#url {
-    width: 400px;
-    height: 20px;
-}
-
-input#url {
-    width: 400px;
-    height: 20px;
-}
-
-input#submit {
-    height: 20px;
-    width: 80px;
+.searchresults {
+    margin-top: 100px;
 }
