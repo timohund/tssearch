@@ -1,21 +1,14 @@
-body {
-    font-family: Arial;
-    font-size: 14px!important;
-    background-color: #eee;
-}
-
-body.main #bar {
-    font-family: Arial;
-    padding: 10px;
-    border-color: #000;
-    border-top: solid 1px;
-    border-bottom: solid 1px;
-    color: #000;
-    margin-top: 20%;
-    height: 100px;
-    background-color: #fff;
-}
-
 .searchresults {
-    margin-top: 100px;
+    margin-top: 80px;
+}
+
+#bar {
+    min-height: 10em;
+    margin-top: 20%;
+    background-color: #DF691A;
+}
+
+#teaser {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

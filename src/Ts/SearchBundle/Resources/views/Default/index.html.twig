@@ -5,26 +5,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap-theme.css') }}">
-
         <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}">
 
     </head>
 
-    <body role="document" class="main">
-        <div id="bar">
-            <div class="row">
-                <div class="col-md-2">&nbsp;</div>
-                <div class="col-md-8">Suche eingehende Links auf {{ count }} Webseiten:</div>
-                <div class="col-md-2">&nbsp;</div>
+    <body class="main">
 
-            </div>
+        <div class="container-fluid" id="bar">
             <div class="row">
-                <div class="col-md-2">&nbsp;</div>
-                <div class="col-md-8">
-                    {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+                <div class="row" id="teaser">
+                    <div class="col-md-5">&nbsp;</div>
+                    <div class="col-md-5">Suche eingehende Links auf {{ count }} Webseiten:</div>
+                    <div class="col-md-2">&nbsp;</div>
+
                 </div>
-                <div class="col-md-2">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2">&nbsp;</div>
+                    <div class="col-md-8">
+                        {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+                    </div>
+                    <div class="col-md-2">&nbsp;</div>
+                </div>
             </div>
 
         </div>
