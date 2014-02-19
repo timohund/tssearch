@@ -29,7 +29,7 @@ class SearchController extends Controller {
 	 * @Template()
 	 */
 	public function searchUrlAction() {
-		$url = $this->getRequest()->get('url');
+		$url = urldecode($this->getRequest()->get('url'));
 
 		if($url != '') {
             try {
@@ -39,7 +39,10 @@ class SearchController extends Controller {
 
                 return $this->render(
                     'TsSearchBundle:Search:search.html.twig',
-                    array('documents' => $documents )
+                    array(
+                        'documents' => $documents,
+                        'url' => $url
+                    )
                 );
             } catch (Exception $e) {
                 var_dump($e->getMessage());

@@ -15,7 +15,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4">
-                        {{ include('TsSearchBundle:Search:searchform.html.twig') }}
+
+                        {% include 'TsSearchBundle:Search:searchform.html.twig' with {'url': url} only %}
+
                     </div>
                 </div>
             </div>
@@ -26,20 +28,36 @@
             {% for document in documents %}
                 <div class="row">
                     <div class="col-sm-9">
-                        <p>Url: {{ document.url }}</p>
-                        <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
 
-                        <ul>
-                            {% for link in document.incominglinkurls_sm|sort %}
-                                <li>{{ link }}</li>
-                            {% endfor %}
-                        </ul>
-                        <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
-                        <ul>
-                            {% for linktext in document.incominglinktexts %}
-                                <li>{{ linktext.linktext }} ({{ linktext.count }})</li>
-                            {% endfor %}
-                        </ul>
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">{{ document.url }}</div>
+                            <div class="panel-body" data-collapse="persist">
+
+                                <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
+                                <div>
+                                    <ul class="list-group">
+                                        {% for link in document.incominglinkurls_sm|sort %}
+                                            <li class="list-group-item">
+                                                <a href="{{ path('ts_search_deeplink', {'url': link|url_encode }) }}">{{ link }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+
+                                <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
+
+                                <div>
+                                    <ul class="list-group">
+                                        {% for linktext in document.incominglinktexts %}
+                                            <li class="list-group-item">{{ linktext.linktext }} ({{ linktext.count }})</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                         <hr />
 
                    </div>
@@ -49,6 +67,9 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="{{ asset('bundles/tssearch/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/docs.min.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/jquery.collapse.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/jquery.collapse_cookie_storage.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/jquery.collapse_storage.js') }}"></script>
 
     </body>
 </html>
