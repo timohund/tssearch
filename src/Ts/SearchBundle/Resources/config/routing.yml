@@ -4,4 +4,4 @@ ts_search_index:
     prefix:   /
 ts_search_deeplink:
     path:      /search/{url}
-    defaults:  { _controller: TsSearchBundle:Default:search }
+    defaults:  { _controller: TsSearchBundle:Search:search }

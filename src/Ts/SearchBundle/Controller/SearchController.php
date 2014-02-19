@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Acl\Exception\Exception;
 use Ts\SearchBundle\Domain\WebsiteRepository;
 
-class DefaultController extends Controller {
+class SearchController extends Controller {
 
 	/**
 	 * @Route("/")
@@ -18,7 +18,7 @@ class DefaultController extends Controller {
         $websiteRepository =$this->get("ts.search.domain.websiterepository");
 
         return $this->render(
-            'TsSearchBundle:Default:index.html.twig',
+            'TsSearchBundle:Search:index.html.twig',
             array('count' =>  $websiteRepository->countAll())
         );
 
@@ -38,7 +38,7 @@ class DefaultController extends Controller {
 
 
                 return $this->render(
-                    'TsSearchBundle:Default:search.html.twig',
+                    'TsSearchBundle:Search:search.html.twig',
                     array('documents' => $documents )
                 );
             } catch (Exception $e) {

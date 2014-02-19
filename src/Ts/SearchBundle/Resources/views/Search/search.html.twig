@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4">
-                        {{ include('TsSearchBundle:Default:searchform.html.twig') }}
+                        {{ include('TsSearchBundle:Search:searchform.html.twig') }}
                     </div>
                 </div>
             </div>
@@ -34,6 +34,14 @@
                                 <li>{{ link }}</li>
                             {% endfor %}
                         </ul>
+                        <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
+                        <ul>
+                            {% for linktext in document.incominglinktexts %}
+                                <li>{{ linktext.linktext }} ({{ linktext.count }})</li>
+                            {% endfor %}
+                        </ul>
+                        <hr />
+
                    </div>
                 </div>
             {% endfor %}
