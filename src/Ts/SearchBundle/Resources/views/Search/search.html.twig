@@ -24,6 +24,15 @@
         </div>
 
         <div class="container searchresults" role="main">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2>Gefundene Webseiten: {{ numFound }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {% for document in documents %}
                 <div class="row">
@@ -31,16 +40,27 @@
 
                         <div class="panel panel-default">
                             <!-- Default panel contents -->
-                            <div class="panel-heading">{{ document.url }}</div>
+                            <div class="panel-heading">
+                                <span class="glyphicon glyphicon-file"></span>
+                                {{ document.url }}
+                            </div>
                             <div class="panel-body" data-collapse="persist">
 
-                                <p>Eingehende Links: {{ document.incominglinkurls_sm|length }}</p>
+                                <p>Eingehende Links: {{ document.incominglinkdomains|length }}</p>
                                 <div>
                                     <ul class="list-group">
-                                        {% for link in document.incominglinkurls_sm|sort %}
-                                            <li class="list-group-item">
-                                                <a href="{{ path('ts_search_deeplink', {'url': link|url_encode }) }}">{{ link }}</a>
+                                        {% for domain in document.incominglinkdomains|sort %}
+                                            <li class="list-group-item" data-collapse="persist">
+                                                <p>{{ domain.domainname }} ({{ domain.links.count }})</p>
+                                                <ul class="list-group">
+                                                    {% for link in domain.links %}
+                                                        <li class="list-group-item">
+                                                            <a href="{{ path('ts_search_deeplink', {'url': link.url|url_encode }) }}">{{ link.url }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
                                             </li>
+
                                         {% endfor %}
                                     </ul>
                                 </div>

@@ -34,13 +34,13 @@ class SearchController extends Controller {
 		if($url != '') {
             try {
                 $websiteRepository =$this->get("ts.search.domain.websiterepository");
-                $documents = $websiteRepository->findByUrl($url);
-
+                $resultSet = $websiteRepository->findByUrl($url);
 
                 return $this->render(
                     'TsSearchBundle:Search:search.html.twig',
                     array(
-                        'documents' => $documents,
+                        'documents' => $resultSet->getDocuments(),
+                        'numFound' => $resultSet->getNumFound(),
                         'url' => $url
                     )
                 );

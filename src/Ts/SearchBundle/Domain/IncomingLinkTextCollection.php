@@ -2,19 +2,7 @@
 
 namespace Ts\SearchBundle\Domain;
 
-class IncomingLinkTextCollection {
-
-    /**
-     * @var
-     */
-    protected $storage;
-
-    /**
-     * @return void
-     */
-    public function __construct() {
-        $this->storage = new \ArrayObject();
-    }
+class IncomingLinkTextCollection extends AbstractCollection {
 
     /**
      * @param IncomingLinkText $linkText

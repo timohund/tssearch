@@ -51,9 +51,7 @@ class WebsiteRepository {
         // this executes the query and returns the result
         $resultset = $this->client->select($query);
 
-        $documents = $resultset->getDocuments();
-
-        return $documents;
+        return $resultset;
     }
 
     /**
