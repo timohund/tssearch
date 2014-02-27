@@ -44,36 +44,40 @@
                                 <span class="glyphicon glyphicon-file"></span>
                                 {{ document.url }}
                             </div>
-                            <div class="panel-body" data-collapse="persist">
-
-                                <p>Eingehende Links: {{ document.incominglinkdomains|length }}</p>
-                                <div>
-                                    <ul class="list-group">
-                                        {% for domain in document.incominglinkdomains|sort %}
-                                            <li class="list-group-item" data-collapse="persist">
-                                                <p>{{ domain.domainname }} ({{ domain.links.count }})</p>
-                                                <ul class="list-group">
-                                                    {% for link in domain.links %}
-                                                        <li class="list-group-item">
-                                                            <a href="{{ path('ts_search_deeplink', {'url': link.url|url_encode }) }}">{{ link.url }}</a>
-                                                        </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </li>
-
-                                        {% endfor %}
-                                    </ul>
+                            <div class="panel-body data-root" data-url="{{ document.url }}">
+                                <div id="linkgraph">
+                                    <canvas class="graphviewport" width="800" height="300"></canvas>
                                 </div>
+                                <div class="expando" data-collapse="persist">
+                                    <p>Linkliste: {{ document.incominglinkdomains|length }}</p>
+                                    <div>
+                                        <ul class="list-group">
+                                            {% for domain in document.incominglinkdomains|sort %}
+                                                <li class="list-group-item" data-collapse="persist">
+                                                    <p class="link-domain-node" data-link-domain="{{ domain.domainname }}">{{ domain.domainname }} ({{ domain.links.count }})</p>
+                                                    <ul class="list-group">
+                                                        {% for link in domain.links %}
+                                                            <li class="list-group-item">
+                                                                <a href="{{ path('ts_search_deeplink', {'url': link.url|url_encode }) }}">{{ link.url }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
 
 
-                                <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
+                                    <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
 
-                                <div>
-                                    <ul class="list-group">
-                                        {% for linktext in document.incominglinktexts %}
-                                            <li class="list-group-item">{{ linktext.linktext }} ({{ linktext.count }})</li>
-                                        {% endfor %}
-                                    </ul>
+                                    <div>
+                                        <ul class="list-group">
+                                            {% for linktext in document.incominglinktexts %}
+                                                <li class="list-group-item">{{ linktext.linktext }} ({{ linktext.count }})</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -90,6 +94,10 @@
         <script src="{{ asset('bundles/tssearch/js/jquery.collapse.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/jquery.collapse_cookie_storage.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/jquery.collapse_storage.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/arbor.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/arbor-tween.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/graphs.js') }}"></script>
+
 
     </body>
 </html>
