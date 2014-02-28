@@ -16,3 +16,16 @@
 .panel-body a {
     color: #fff;
 }
+
+#linktree {
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.jstree-search {
+    color: #DF691A!important;
+}
+
+#linktree {
+    margin-top: 10px;
+}

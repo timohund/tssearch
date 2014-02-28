@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/bootstrap.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/themes/default/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/tssearch/css/main.css') }}">
 
 </head>
@@ -41,34 +42,50 @@
                         <div class="panel panel-default">
                             <!-- Default panel contents -->
                             <div class="panel-heading">
-                                <span class="glyphicon glyphicon-file"></span>
-                                {{ document.url }}
+                                <span class="glyphicon glyphicon-file"></span>Report: {{ document.url }}</h3>
                             </div>
                             <div class="panel-body data-root" data-url="{{ document.url }}">
-                                <div id="linkgraph">
-                                    <canvas class="graphviewport" width="800" height="300"></canvas>
-                                </div>
-                                <div class="expando" data-collapse="persist">
-                                    <p>Linkliste: {{ document.incominglinkdomains|length }}</p>
-                                    <div>
-                                        <ul class="list-group">
-                                            {% for domain in document.incominglinkdomains|sort %}
-                                                <li class="list-group-item" data-collapse="persist">
-                                                    <p class="link-domain-node" data-link-domain="{{ domain.domainname }}">{{ domain.domainname }} ({{ domain.links.count }})</p>
-                                                    <ul class="list-group">
-                                                        {% for link in domain.links %}
-                                                            <li class="list-group-item">
-                                                                <a href="{{ path('ts_search_deeplink', {'url': link.url|url_encode }) }}">{{ link.url }}</a>
-                                                            </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </li>
-
-                                            {% endfor %}
-                                        </ul>
+                                <p>Eingehende Linkstruktur ({{ document.incominglinkurls_sm|length }})</p>
+                                <div class="row">
+                                    <div id="linkgraph" class="col-sm-6">
+                                        <canvas class="graphviewport" width="400" height="450"></canvas>
                                     </div>
 
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-sm-5"></div>
+                                            <div class="col-sm-7">
+                                                <div class="input-group">
+                                                    <input type="text" id="linksearch" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn-sm btn-default" type="submit">
+                                                            <span class="glyphicon glyphicon-filter"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div id="linktree">
+                                            <ul class="list-group">
+                                                {% for domain in document.incominglinkdomains|sort %}
+                                                    <li class="list-group-item">
+                                                        {{ domain.domainname }} ({{ domain.links.count }})<span class="link-domain-node" data-link-domain="{{ domain.domainname }}" data-weight="{{ domain.links.count }}">&nbsp;</span>
+                                                        <ul class="list-group">
+                                                            {% for link in domain.links %}
+                                                                <li class="list-group-item">
+                                                                    <a href="{{ path('ts_search_deeplink', {'url': link.url|url_encode }) }}">{{ link.url }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="expando" data-collapse="persist">
                                     <p>Eingehende Linktexte: {{ document.incominglinktexts|length }}</p>
 
                                     <div>
@@ -91,12 +108,11 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="{{ asset('bundles/tssearch/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/docs.min.js') }}"></script>
-        <script src="{{ asset('bundles/tssearch/js/jquery.collapse.js') }}"></script>
-        <script src="{{ asset('bundles/tssearch/js/jquery.collapse_cookie_storage.js') }}"></script>
-        <script src="{{ asset('bundles/tssearch/js/jquery.collapse_storage.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/arbor.js') }}"></script>
         <script src="{{ asset('bundles/tssearch/js/arbor-tween.js') }}"></script>
-        <script src="{{ asset('bundles/tssearch/js/graphs.js') }}"></script>
+        <script src="{{ asset('bundles/tssearch/js/jstree/jstree.js') }}"></script>
+
+        <script src="{{ asset('bundles/tssearch/js/main.js') }}"></script>
 
 
     </body>
