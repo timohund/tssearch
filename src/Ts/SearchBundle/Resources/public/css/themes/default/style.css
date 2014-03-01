@@ -857,15 +857,14 @@
   .jstree-default-responsive .jstree-anchor {
     font-weight: bold;
     font-size: 1.1em;
-    text-shadow: 1px 1px white;
   }
   .jstree-default-responsive > .jstree-striped {
     background: transparent;
   }
   .jstree-default-responsive .jstree-wholerow {
-    border-top: 1px solid rgba(255, 255, 255, 0.7);
-    border-bottom: 1px solid rgba(64, 64, 64, 0.2);
-    background: #ebebeb;
+    border-top: 1px solid rgba(43, 62, 80, 0.7);
+    border-bottom: 1px solid rgba(43, 62, 80, 0.2);
+
     height: 40px;
   }
   .jstree-default-responsive .jstree-wholerow-hovered {

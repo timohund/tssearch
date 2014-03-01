@@ -53,7 +53,7 @@
                 particleSystem.eachNode (function (node, pt)
                 {
                     var w = 3 * Math.max(1,Math.min(10,node.data.weight));
-                    ctx.fillStyle = "orange";
+                    ctx.fillStyle = "rgba(223, 105, 26, .888)";
                     ctx.fillRect (pt.x-w/2, pt.y-w/2, w,w);
 
                     if(node.data.draw) {
@@ -156,6 +156,11 @@
                     node.data.weight = weight;
 
                 });
+
+                viewPortNode.responsiveCanvas({
+                    aspectRatio: 1 / 1.1,
+                    backgroundColor: '#FFFFFF'
+                })
             }
         );
 
@@ -163,7 +168,6 @@
             {
                 "core" : {
                     "animation" : 1,
-                    "check_callback" : true,
                     "themes" : { "stripes" : true }
                 },
                 "types" : {
@@ -215,6 +219,8 @@
     jQuery(window).bind("unload", function() {
         jQuery( "body.main #bar" ).show( "slow" );
     });
+
+
 
 
 })(this.jQuery)

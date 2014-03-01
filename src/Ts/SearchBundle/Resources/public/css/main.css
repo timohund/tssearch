@@ -22,10 +22,19 @@
     overflow: scroll;
 }
 
+
 .jstree-search {
     color: #DF691A!important;
 }
 
 #linktree {
     margin-top: 10px;
+}
+
+body {
+    color: #fff;
+}
+
+canvas {
+    border: solid 1px #2b3e50;
 }
