@@ -50,4 +50,15 @@ class SearchController extends Controller {
             }
 		}
 	}
+
+	/**
+	 * @Route("/about")
+	 * @Template()
+	 */
+	public function aboutAction() {
+		return $this->render(
+			'TsSearchBundle:Search:about.html.twig'
+		);
+
+	}
 }

@@ -4,6 +4,9 @@
 //  A project template for using arbor.js
 //
 
+var nodeCounter = 0;
+
+
 (function($){
 
     var Renderer = function(canvas){
@@ -151,10 +154,13 @@
                 dataRootNode.find(".link-domain-node").each(function(index, element) {
                     var linkDomain = jQuery(this).data("link-domain");
                     var weight = jQuery(this).data("weight");
-                    sys.addEdge(mainUrl,linkDomain);
-                    var node = sys.getNode(linkDomain);
-                    node.data.weight = weight;
+					nodeCounter++;
 
+					if(nodeCounter < 400) {
+						sys.addEdge(mainUrl,linkDomain);
+						var node = sys.getNode(linkDomain);
+						node.data.weight = weight;
+					}
                 });
 
                 viewPortNode.responsiveCanvas({

@@ -30,6 +30,20 @@
 
         </div>
 
+        <div class="navbar navbar-bottom" role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5">&nbsp;</div>
+                    <div class="col-md-5 center-block">
+                        <a href="{{ path('ts_search_about') }}">Impressum</a> |
+                        <a href="{{ path('ts_search_deeplink', {'url': 'http://www.google.de/'|url_encode }) }}">Beispiel: google.de</a>
+                    </div>
+                    <div class="col-md-2">&nbsp;</div>
+
+                </div>
+            </div>
+        </div>
+
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="{{ asset('bundles/tssearch/js/bootstrap.min.js') }}"></script>
