@@ -30,6 +30,7 @@ class SearchController extends Controller {
 	 */
 	public function searchUrlAction() {
 		$url = urldecode($this->getRequest()->get('url'));
+		$url = $this->getCorrectUrl($url);
 
 		if($url != '') {
             try {
@@ -49,6 +50,21 @@ class SearchController extends Controller {
                 die();
             }
 		}
+	}
+
+	/**
+	 * @param $url
+	 */
+	protected function getCorrectUrl($url) {
+		if(substr($url,0,7) !== 'http://' && substr($url,0,8) !== 'https://' && strpos($url,"://") === false) {
+			$url = 'http://'.$url;
+		}
+
+		if(substr_count($url,"/") == 2) {
+			$url .= '/';
+		}
+
+		return $url;
 	}
 
 	/**

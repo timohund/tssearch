@@ -160,6 +160,9 @@ var nodeCounter = 0;
 						sys.addEdge(mainUrl,linkDomain);
 						var node = sys.getNode(linkDomain);
 						node.data.weight = weight;
+					} else {
+						//stop when the limit was reached
+						return false;
 					}
                 });
 
